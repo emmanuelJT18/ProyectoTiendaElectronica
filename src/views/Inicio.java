@@ -1,4 +1,6 @@
 package views;
+import views.viewPanels.pFacturaView;
+import views.viewPanels.pInicioView;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -15,10 +17,19 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.SystemColor;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Inicio extends JFrame {
 
 	private JPanel contentPane;
+	private static JPanel pParentContainer = new JPanel();
+	private JPanel pNorthContainer = new JPanel();
+	private JPanel pWestContainer = new JPanel();
+	private JButton btnGoToInicio = new JButton("Inicio");
+	private JButton btnGoToFactura = new JButton("Facturar");
 
 	/**
 	 * Launch the application.
@@ -29,11 +40,38 @@ public class Inicio extends JFrame {
 				try {
 					Inicio frame = new Inicio();
 					frame.setVisible(true);
+					System.out.println(pParentContainer.getLocationOnScreen());
+					System.out.println("Ancho: " + pParentContainer.getWidth());
+					System.out.println("Alto: " + pParentContainer.getHeight());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	private void showMyPanel(JPanel parentPanel, JPanel childPanel) {
+		/*
+		 * 		childPanel.setSize(593, 382);
+		childPanel.setLocation(0,0);
+		
+		parentPanel.removeAll();
+		parentPanel.add(childPanel);
+		parentPanel.revalidate();
+		parentPanel.repaint();*/
+		
+		/*
+		 * java.awt.Point[x=414,y=213]
+	Ancho: 993
+	Alto: 620*/
+		
+		childPanel.setSize(993, 620);
+		childPanel.setLocation(414, 213);
+		
+		parentPanel.removeAll();
+		parentPanel.add(childPanel);
+		parentPanel.revalidate();
+		parentPanel.repaint();
 	}
 
 	/**
@@ -48,18 +86,39 @@ public class Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel pNorthContainer = new JPanel();
 		pNorthContainer.setBackground(Color.RED);
 		pNorthContainer.setPreferredSize(new Dimension(700,70));
 		contentPane.add(pNorthContainer, BorderLayout.NORTH);
 		
-		JPanel pWestContainer = new JPanel();
+
 		pWestContainer.setBackground(Color.GREEN);
 		pWestContainer.setPreferredSize(new Dimension(300,700));
 		contentPane.add(pWestContainer, BorderLayout.WEST);
 		
-		JPanel pParentContainer = new JPanel();
-		pParentContainer.setBackground(SystemColor.activeCaption);
+		
+		btnGoToInicio.setBounds(0, 47, 300, 49);
+		btnGoToInicio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pInicioView viewInicio = new pInicioView();
+				showMyPanel(pParentContainer, viewInicio);
+			}
+		});
+		
+		btnGoToFactura.setBounds(0, 109, 300, 49);
+		btnGoToFactura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				pFacturaView viewFactura = new pFacturaView();
+				showMyPanel(pParentContainer, viewFactura);
+
+			}
+		});
+		pWestContainer.setLayout(null);
+		
+		pWestContainer.add(btnGoToInicio);
+		pWestContainer.add(btnGoToFactura);
+		
+		
+		pParentContainer.setBackground(Color.BLUE);
 		contentPane.add(pParentContainer, BorderLayout.CENTER);
 	}
 }
