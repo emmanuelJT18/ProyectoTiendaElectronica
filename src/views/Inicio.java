@@ -14,6 +14,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.SystemColor;
 
 public class Inicio extends JFrame {
 
@@ -42,18 +43,23 @@ public class Inicio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1321, 747);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.controlLtHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.RED);
-		panel.setPreferredSize(new Dimension(700,50));
-		contentPane.add(panel, BorderLayout.NORTH);
+		JPanel pNorthContainer = new JPanel();
+		pNorthContainer.setBackground(Color.RED);
+		pNorthContainer.setPreferredSize(new Dimension(700,70));
+		contentPane.add(pNorthContainer, BorderLayout.NORTH);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GREEN);
-		panel_1.setPreferredSize(new Dimension(100,700));
-		contentPane.add(panel_1, BorderLayout.WEST);
+		JPanel pWestContainer = new JPanel();
+		pWestContainer.setBackground(Color.GREEN);
+		pWestContainer.setPreferredSize(new Dimension(300,700));
+		contentPane.add(pWestContainer, BorderLayout.WEST);
+		
+		JPanel pParentContainer = new JPanel();
+		pParentContainer.setBackground(SystemColor.activeCaption);
+		contentPane.add(pParentContainer, BorderLayout.CENTER);
 	}
 }
