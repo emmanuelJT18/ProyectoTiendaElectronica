@@ -13,6 +13,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class MainWindow {
 
@@ -56,6 +58,7 @@ public class MainWindow {
 		    }
 
 		};
+		menuBar.setBackground(Color.GREEN);
 		frame.setJMenuBar(menuBar);
 		
 		JMenu mnInicio = new JMenu("Menu 1");
@@ -77,9 +80,5 @@ public class MainWindow {
 		JMenuItem mntmVerComponentes = new JMenuItem("Ver Componentes");
 		mnComponentes.add(mntmVerComponentes);
 		frame.getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(188, 0, 771, 443);
-		frame.getContentPane().add(panel);
 	}
 }
