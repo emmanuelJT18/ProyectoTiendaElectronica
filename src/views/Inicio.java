@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import views.compVisuales.BtnForSideMenu;
+
 import java.awt.GridLayout;
 import java.awt.Image;
 
@@ -23,8 +26,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import views.misComponentes.BtnForSideMenu;
+
 import javax.swing.SwingConstants;
+import logic.Utilidad;
 
 
 public class Inicio extends JFrame {
@@ -59,40 +63,6 @@ public class Inicio extends JFrame {
 				}
 			}
 		});
-	}
-	private void fitImageInsideLabel(String route, JLabel label) {
-		//Make sure to assigned a width and hight to the label otherwise
-		//The image wont be resized properly
-		ImageIcon originalImg = new ImageIcon(route);
-		Image resizedImg = originalImg.getImage().getScaledInstance(
-				label.getWidth(), 
-				label.getHeight(), 
-				Image.SCALE_SMOOTH
-		);
-		label.setIcon(new ImageIcon(resizedImg));
-	}
-	private void showMyPanel(JPanel parentPanel, JPanel childPanel) {
-		/*
-		 * 		childPanel.setSize(593, 382);
-		childPanel.setLocation(0,0);
-		
-		parentPanel.removeAll();
-		parentPanel.add(childPanel);
-		parentPanel.revalidate();
-		parentPanel.repaint();*/
-		
-		/*
-		 * java.awt.Point[x=414,y=213]
-	Ancho: 993
-	Alto: 620*/
-		
-		childPanel.setSize(1200,800);
-		childPanel.setLocation(414, 200);
-		
-		parentPanel.removeAll();
-		parentPanel.add(childPanel);
-		parentPanel.revalidate();
-		parentPanel.repaint();
 	}
 
 	/**
@@ -130,7 +100,7 @@ public class Inicio extends JFrame {
 		btnGoToInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PInicioView viewInicio = new PInicioView();
-				showMyPanel(pParentContainer, viewInicio);
+				Utilidad.showMyPanel(pParentContainer, viewInicio);
 			}
 		});
 		
@@ -138,7 +108,7 @@ public class Inicio extends JFrame {
 		btnGoToFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PFacturaView viewFactura = new PFacturaView();
-				showMyPanel(pParentContainer, viewFactura);
+				Utilidad.showMyPanel(pParentContainer, viewFactura);
 
 			}
 		});
@@ -147,7 +117,7 @@ public class Inicio extends JFrame {
 		pWestContainer.add(btnGoToInicio);
 		pWestContainer.add(btnGoToFactura);
 		lblLogo.setBounds(0, 0, 300, 178);
-		fitImageInsideLabel(
+		Utilidad.fitImageInsideLabel(
 				"D:\\PUCMM7\\Cam Clim\\Practicas\\Practica 5\\WhatsApp Image 2025-07-06 at 14.44.25_2f7d1c76.jpg", 
 				lblLogo
 	    );
@@ -156,6 +126,7 @@ public class Inicio extends JFrame {
 		
 		
 		pParentContainer.setBackground(Color.BLUE);
+		pParentContainer.add(new PInicioView());
 		contentPane.add(pParentContainer, BorderLayout.CENTER);
 	}
 }

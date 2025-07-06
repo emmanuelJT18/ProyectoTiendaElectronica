@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import net.miginfocom.swing.MigLayout;
+import views.compVisuales.LblMenuTab;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenu;
@@ -36,62 +38,30 @@ public class PFacturaView extends JPanel {
 		pMenuBar.setSize(1100,60);
 		add(pMenuBar);
 		
-		JLabel lblFacturar = new JLabel("Facturar");
-		lblFacturar.setBackground(new Color(205,206,210));
-		lblFacturar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				lblFacturar.setBackground(new Color(205,6,210));
-				lblFacturar.setOpaque(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblFacturar.setBackground(new Color(205,206,210));
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				lblFacturar.setBackground(new Color(20,206,210));
-			}
-		});
-
+		JPanel pContainer = new JPanel();
+		pContainer.setBounds(0, 60, 1100, 740);
+		add(pContainer);
+		pContainer.setLayout(null);
 		
-		JLabel lblReportes = new JLabel("Reportes");
-		lblReportes.setBackground(new Color(205,206,210));
-		lblReportes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				lblReportes.setBackground(new Color(205,6,210));
-				lblReportes.setOpaque(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblReportes.setBackground(new Color(205,206,210));
-			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				lblReportes.setBackground(new Color(20,206,210));
-			}
-		});
-		GroupLayout gl_pMenuBar = new GroupLayout(pMenuBar);
-		gl_pMenuBar.setHorizontalGroup(
-			gl_pMenuBar.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pMenuBar.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblFacturar, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblReportes, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(843, Short.MAX_VALUE))
-		);
-		gl_pMenuBar.setVerticalGroup(
-			gl_pMenuBar.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_pMenuBar.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_pMenuBar.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblFacturar, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-						.addComponent(lblReportes, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)))
-		);
-		pMenuBar.setLayout(gl_pMenuBar);
+		JPanel crearFacturaView = new PCrearFactura();
+		JLabel lblFacturar = new LblMenuTab("Facturar", pContainer, crearFacturaView);
+		lblFacturar.setBounds(12, 13, 119, 47);
+		
+		JPanel reporteFacturaView = new PReporteFactura();
+		JLabel lblReportes = new LblMenuTab("Reportes", pContainer, reporteFacturaView);
+		lblReportes.setBounds(130, 13, 119, 47);
+		pMenuBar.setLayout(null);
+		pMenuBar.add(lblFacturar);
+		pMenuBar.add(lblReportes);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(502, 12, 1, 1);
+		pContainer.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblFacturasContianer = new JLabel("FacturasContainer");
+		lblFacturasContianer.setBounds(508, 5, 104, 16);
+		pContainer.add(lblFacturasContianer);
 		
 	}
 }

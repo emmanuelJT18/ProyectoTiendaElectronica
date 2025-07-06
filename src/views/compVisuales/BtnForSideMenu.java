@@ -1,4 +1,4 @@
-package views.misComponentes;
+package views.compVisuales;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
