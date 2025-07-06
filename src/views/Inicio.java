@@ -1,7 +1,4 @@
 package views;
-import views.viewPanels.pFacturaView;
-import views.viewPanels.pInicioView;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -10,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout;
@@ -40,6 +38,8 @@ public class Inicio extends JFrame {
 				try {
 					Inicio frame = new Inicio();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
 					System.out.println(pParentContainer.getLocationOnScreen());
 					System.out.println("Ancho: " + pParentContainer.getWidth());
 					System.out.println("Alto: " + pParentContainer.getHeight());
@@ -65,8 +65,8 @@ public class Inicio extends JFrame {
 	Ancho: 993
 	Alto: 620*/
 		
-		childPanel.setSize(993, 620);
-		childPanel.setLocation(414, 213);
+		childPanel.setSize(1200,800);
+		childPanel.setLocation(414, 200);
 		
 		parentPanel.removeAll();
 		parentPanel.add(childPanel);
@@ -79,7 +79,7 @@ public class Inicio extends JFrame {
 	 */
 	public Inicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1321, 747);
+		setBounds(100, 100, 1431, 889);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.controlLtHighlight);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

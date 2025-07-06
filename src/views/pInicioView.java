@@ -1,4 +1,4 @@
-package views.viewPanels;
+package views;
 
 import java.awt.Dimension;
 
@@ -11,7 +11,7 @@ public class pInicioView extends JPanel {
 	 * Create the panel.
 	 */
 	public pInicioView() {
-		this.setPreferredSize(new Dimension(993,620));
+		this.setPreferredSize(new Dimension(1100,800));
 		setLayout(null);
 		
 		JLabel lblInicio = new JLabel("INICIO");
