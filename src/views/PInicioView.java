@@ -5,12 +5,12 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class pInicioView extends JPanel {
+public class PInicioView extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public pInicioView() {
+	public PInicioView() {
 		this.setPreferredSize(new Dimension(1100,800));
 		setLayout(null);
 		
