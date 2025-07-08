@@ -1,52 +1,67 @@
 package views.compVisuales;
+
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 import logic.Utilidad;
 
-public class LblMenuTab extends JLabel{
-	
-	private final Color bgColor;
-	private final Color hoverColor;
-	private final Color clickedColor;
+public class LblMenuTab extends JLabel {
+
 	private final JPanel childPanel;
 	private final JPanel parentPanel;
+	private static LblMenuTab currentSelectedTab = null;
 	
+	private final Color lineColor = new Color(6, 57, 112); //Azul marino
+	private final Border normalBorder = BorderFactory.createBevelBorder(1);//creaProfundidad
+	private final Border hoverBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, lineColor);
+	private final Border clickedBorder = BorderFactory.createMatteBorder(0, 0, 4, 0, lineColor);
+
 	public LblMenuTab(String text, JPanel parentPanel, JPanel childPanel) {
 		super(text);
-		
-		this.bgColor = new Color(205,206,210);
-		this.hoverColor = new Color(205,6,210);
-		this.clickedColor = new Color(20,206,210);
+
 		this.childPanel = childPanel;
 		this.parentPanel = parentPanel;
-		
-		setBackground(bgColor);
-		setOpaque(true);
+
+		setOpaque(true); 
 		setHorizontalAlignment(JLabel.CENTER);
-		
+		setBorder(normalBorder);
+
 		eventos();
 	}
-	
+
 	private void eventos() {
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				setBackground(hoverColor);
-				setOpaque(true);
+			public void mouseEntered(MouseEvent e) {
+				if(currentSelectedTab != LblMenuTab.this) {
+					setBorder(hoverBorder);
+				}
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
-				setBackground(new Color(205,206,210));
+				if(currentSelectedTab != LblMenuTab.this) {
+					setBorder(normalBorder);
+				}
 			}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setBackground(clickedColor);
-				if(parentPanel != null && childPanel != null) Utilidad.showMyPanel(parentPanel, childPanel);
 
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(currentSelectedTab != null && currentSelectedTab != LblMenuTab.this) {
+					currentSelectedTab.setBorder(normalBorder);
+				}
+				
+				currentSelectedTab = LblMenuTab.this;
+				setBorder(clickedBorder);
+				if (parentPanel != null && childPanel != null) {
+					Utilidad.showMyPanel(parentPanel, childPanel);
+				}
 			}
 		});
 	}
