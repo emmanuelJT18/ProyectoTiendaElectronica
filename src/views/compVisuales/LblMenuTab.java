@@ -15,7 +15,8 @@ public class LblMenuTab extends JLabel {
 
 	private final JPanel childPanel;
 	private final JPanel parentPanel;
-	private static LblMenuTab currentSelectedTab = null;
+	private static LblMenuTab currentSelectedTab = null;//This will help me to identify which object of the class was clicked 
+	//to un-clicked the previous one if other tab was clicked before
 	
 	private final Color lineColor = new Color(6, 57, 112); //Azul marino
 	private final Border normalBorder = BorderFactory.createBevelBorder(1);//creaProfundidad
@@ -40,7 +41,10 @@ public class LblMenuTab extends JLabel {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				if(currentSelectedTab != LblMenuTab.this) {
-					setBorder(hoverBorder);
+					//If an object of this class is different from the static variable of this class
+					//the following code will be executed
+					
+					setBorder(hoverBorder);//set a hover effect of a underline on the tab
 				}
 			}
 

@@ -37,9 +37,9 @@ public class Inicio extends JFrame {
 	private static JPanel pParentContainer = new JPanel();
 	private JPanel pNorthContainer = new JPanel();
 	private JPanel pWestContainer = new JPanel();
-	private JButton btnGoToInicio = new BtnForSideMenu("Inicio");
-	private JButton btnGoToFactura = new BtnForSideMenu("Facturar");
-	private JButton btnGoToComponente = new BtnForSideMenu("Componentes");
+	private JButton btnGoToInicio;
+	private JButton btnGoToFactura;
+	private JButton btnGoToComponente;
 	private final JLabel lblNombreSistema = new JLabel("EJM Electronica");
 	private final JLabel lblCerrarSesion = new JLabel("Cerrar Sesion");
 	private final JLabel lblLogo = new JLabel("");
@@ -95,7 +95,7 @@ public class Inicio extends JFrame {
 		pWestContainer.setPreferredSize(new Dimension(300,700));
 		contentPane.add(pWestContainer, BorderLayout.WEST);
 		
-		
+		btnGoToInicio = new BtnForSideMenu("Inicio");
 		btnGoToInicio.setBounds(0, 191, 300, 49);
 		btnGoToInicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -104,6 +104,7 @@ public class Inicio extends JFrame {
 			}
 		});
 		
+		btnGoToFactura = new BtnForSideMenu("Facturas");
 		btnGoToFactura.setBounds(0, 253, 300, 49);
 		btnGoToFactura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,9 +114,20 @@ public class Inicio extends JFrame {
 			}
 		});
 		
+		btnGoToComponente = new BtnForSideMenu("Componentes");
+		btnGoToComponente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Utilidad.showMyPanel(null, null);
+			}
+		});
+		btnGoToComponente.setBounds(0, 315, 300, 49);
+		
+		btnGoToFactura.setBounds(0, 253, 300, 49);
+
 		pWestContainer.setLayout(null);
 		pWestContainer.add(btnGoToInicio);
 		pWestContainer.add(btnGoToFactura);
+		pWestContainer.add(btnGoToComponente);
 		lblLogo.setBounds(0, 0, 300, 178);
 		Utilidad.fitImageInsideLabel(
 				"D:\\PUCMM7\\Cam Clim\\Practicas\\Practica 5\\WhatsApp Image 2025-07-06 at 14.44.25_2f7d1c76.jpg", 
@@ -123,8 +135,7 @@ public class Inicio extends JFrame {
 	    );
 		lblLogo.setHorizontalAlignment(JLabel.CENTER);
 		pWestContainer.add(lblLogo);
-		
-		
+	
 		pParentContainer.setBackground(Color.BLUE);
 		pParentContainer.add(new PInicioView());
 		contentPane.add(pParentContainer, BorderLayout.CENTER);

@@ -17,14 +17,19 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import logic.Utilidad;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PFacturaView extends JPanel {
-	
-
+	private int xlocation;
+	private int ylocation;
+	private int width;
+	private int height;
 	/**
 	 * Create the panel.
 	 */
@@ -38,17 +43,22 @@ public class PFacturaView extends JPanel {
 		pMenuBar.setSize(1100,60);
 		add(pMenuBar);
 		
-		JPanel pContainer = new JPanel();
-		pContainer.setBounds(0, 60, 1100, 740);
-		add(pContainer);
-		pContainer.setLayout(null);
+		JPanel pContainerForViews = new JPanel();
+		pContainerForViews.setBounds(
+				Utilidad.xlocationForPanelView, 
+				Utilidad.ylocationForPanelView, 
+				Utilidad.witdhForPanelView, 
+				Utilidad.heightForPanelView
+		);
+		add(pContainerForViews);
+		pContainerForViews.setLayout(null);
 		
 		JPanel crearFacturaView = new PCrearFactura();
-		JLabel lblFacturar = new LblMenuTab("Facturar", pContainer, crearFacturaView);
+		JLabel lblFacturar = new LblMenuTab("Facturar", pContainerForViews, crearFacturaView);
 		lblFacturar.setBounds(12, 13, 119, 47);
 		
 		JPanel reporteFacturaView = new PReporteFactura();
-		JLabel lblReportes = new LblMenuTab("Reportes", pContainer, reporteFacturaView);
+		JLabel lblReportes = new LblMenuTab("Reportes", pContainerForViews, reporteFacturaView);
 		lblReportes.setBounds(130, 13, 119, 47);
 		pMenuBar.setLayout(null);
 		pMenuBar.add(lblFacturar);
@@ -56,12 +66,12 @@ public class PFacturaView extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(502, 12, 1, 1);
-		pContainer.add(panel);
+		pContainerForViews.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblFacturasContianer = new JLabel("FacturasContainer");
 		lblFacturasContianer.setBounds(508, 5, 104, 16);
-		pContainer.add(lblFacturasContianer);
+		pContainerForViews.add(lblFacturasContianer);
 		
 	}
 }
