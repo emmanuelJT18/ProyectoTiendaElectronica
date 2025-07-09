@@ -31,24 +31,12 @@ public class DGCrearCompMicroProcesador extends JDialog {
 	private JTextField txtTipoConexion;
 	private JTextField txtVelocidadProcesamiento;
 	private Tienda controlador = Tienda.getInstance();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			DGCrearCompMicroProcesador dialog = new DGCrearCompMicroProcesador();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	private PComponenteView componenteView;
 	/**
 	 * Create the dialog.
 	 */
-	public DGCrearCompMicroProcesador() {
+	public DGCrearCompMicroProcesador(PComponenteView componenteView) {
+		this.componenteView = componenteView;
 		setBounds(100, 100, 655, 441);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -163,8 +151,7 @@ public class DGCrearCompMicroProcesador extends JDialog {
 							
 							String test = controlador.getComponentes().get(0).getId();
 							JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
-
-							
+							componenteView.updateTable();//Refreshes the table
 						}catch(Exception ex) {
 							JOptionPane.showConfirmDialog(null, "Description: " + ex);
 						}
