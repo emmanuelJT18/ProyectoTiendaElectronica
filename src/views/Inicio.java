@@ -91,7 +91,7 @@ public class Inicio extends JFrame {
 		pNorthContainer.add(lblCerrarSesion, BorderLayout.EAST);
 		
 
-		pWestContainer.setBackground(Color.GREEN);
+		pWestContainer.setBackground(new Color(7, 12, 59));
 		pWestContainer.setPreferredSize(new Dimension(300,700));
 		contentPane.add(pWestContainer, BorderLayout.WEST);
 		
