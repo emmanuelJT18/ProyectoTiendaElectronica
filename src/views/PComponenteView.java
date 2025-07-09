@@ -8,6 +8,8 @@ import logic.Utilidad;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import java.awt.BorderLayout;
 
 public class PComponenteView extends JPanel {
 
@@ -21,16 +23,13 @@ public class PComponenteView extends JPanel {
 						Utilidad.heightForParentPanelView
 				)
 		);
-		setLayout(null);
+		setLayout(new BorderLayout(0, 0));
 		
-		JButton btnCrearComponente = new JButton("Crear Componente");
-		btnCrearComponente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnCrearComponente.setBounds(529, 203, 154, 45);
-		add(btnCrearComponente);
+		JPanel pActions = new JPanel();
+		add(pActions, BorderLayout.NORTH);
+		
+		JPanel pShowData = new JPanel();
+		add(pShowData, BorderLayout.CENTER);
 		
 		
 	}

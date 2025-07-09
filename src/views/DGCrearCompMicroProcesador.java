@@ -7,8 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Componente;
+import logic.MicroProcesador;
+import logic.Tienda;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DGCrearCompMicroProcesador extends JDialog {
 
@@ -21,6 +30,7 @@ public class DGCrearCompMicroProcesador extends JDialog {
 	private JTextField txtCantidadDisponible;
 	private JTextField txtTipoConexion;
 	private JTextField txtVelocidadProcesamiento;
+	private Tienda controlador = Tienda.getInstance();
 
 	/**
 	 * Launch the application.
@@ -134,15 +144,40 @@ public class DGCrearCompMicroProcesador extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnCreate = new JButton("Crear Componente");
+				btnCreate.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							
+							String id = txtId.getText();                      
+							String numeroSerie = txtNumeroSerie.getText();                 
+							String marca = txtMarca.getText();                       
+							String modelo = txtModelo.getText();                      
+							Double precio = Double.parseDouble(txtPrecio.getText());                      
+							int cantDisponible = Integer.parseInt(txtCantidadDisponible.getText());          
+							String tipoConexion = txtTipoConexion.getText();                
+							String velocidadProcesamiento = txtVelocidadProcesamiento.getText();      
+							
+							MicroProcesador nuevoComponente = new MicroProcesador(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, velocidadProcesamiento);
+							controlador.addComponente(nuevoComponente);
+							
+							String test = controlador.getComponentes().get(0).getId();
+							JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
+
+							
+						}catch(Exception ex) {
+							JOptionPane.showConfirmDialog(null, "Description: " + ex);
+						}
+					}
+				});
+				btnCreate.setActionCommand("OK");
+				buttonPane.add(btnCreate);
+				getRootPane().setDefaultButton(btnCreate);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.setActionCommand("Cancel");
+				buttonPane.add(btnCancelar);
 			}
 		}
 	}
