@@ -26,15 +26,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class PFacturaView extends JPanel {
-	private int xlocation;
-	private int ylocation;
-	private int width;
-	private int height;
 	/**
 	 * Create the panel.
 	 */
 	public PFacturaView() {
-		this.setPreferredSize(new Dimension(1100,800));
+		setPreferredSize(new Dimension(1100,800));
 		setLayout(null);
 		
 		JPanel pMenuBar = new JPanel();
@@ -45,10 +41,10 @@ public class PFacturaView extends JPanel {
 		
 		JPanel pContainerForViews = new JPanel();
 		pContainerForViews.setBounds(
-				Utilidad.xlocationForPanelView, 
-				Utilidad.ylocationForPanelView, 
-				Utilidad.witdhForPanelView, 
-				Utilidad.heightForPanelView
+				Utilidad.xlocationForChildPanelView, 
+				Utilidad.ylocationForChildPanelView, 
+				Utilidad.witdhForChildPanelView, 
+				Utilidad.heightForChildPanelView
 		);
 		add(pContainerForViews);
 		pContainerForViews.setLayout(null);

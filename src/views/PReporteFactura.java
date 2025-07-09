@@ -14,10 +14,10 @@ public class PReporteFactura extends JPanel {
 	 */
 	public PReporteFactura() {
 		setBounds(
-				Utilidad.xlocationForPanelView, 
-				Utilidad.ylocationForPanelView, 
-				Utilidad.witdhForPanelView, 
-				Utilidad.heightForPanelView
+				Utilidad.xlocationForChildPanelView, 
+				Utilidad.ylocationForChildPanelView, 
+				Utilidad.witdhForChildPanelView, 
+				Utilidad.heightForChildPanelView
 		);
 		setLayout(new BorderLayout(0, 0));
 		

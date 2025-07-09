@@ -9,10 +9,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Utilidad {
-	public static final int witdhForPanelView = 1100;
-	public static final int heightForPanelView = 740;
-	public static final int xlocationForPanelView = 0;
-	public static final int ylocationForPanelView = 60;
+	public static final int witdhForParentPanelView = 1100;
+	public static final int heightForParentPanelView = 800;
+	
+	public static final int witdhForChildPanelView = 1100;
+	public static final int heightForChildPanelView = 740;
+	public static final int xlocationForChildPanelView = 0;
+	public static final int ylocationForChildPanelView = 60;
 	
 	public static void fitImageInsideLabel(String route, JLabel label) {
 		//Make sure to assign a width and hight to the label before using
