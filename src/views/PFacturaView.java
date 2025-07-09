@@ -50,11 +50,12 @@ public class PFacturaView extends JPanel {
 		pContainerForViews.setLayout(null);
 		
 		JPanel crearFacturaView = new PCrearFactura();
-		JLabel lblFacturar = new LblMenuTab("Facturar", pContainerForViews, crearFacturaView);
+		LblMenuTab lblFacturar = new LblMenuTab("Facturar", pContainerForViews, crearFacturaView);
+		lblFacturar.presentedAsPressed();
 		lblFacturar.setBounds(12, 13, 119, 47);
 		
 		JPanel reporteFacturaView = new PReporteFactura();
-		JLabel lblReportes = new LblMenuTab("Reportes", pContainerForViews, reporteFacturaView);
+		LblMenuTab lblReportes = new LblMenuTab("Reportes", pContainerForViews, reporteFacturaView);
 		lblReportes.setBounds(130, 13, 119, 47);
 		pMenuBar.setLayout(null);
 		pMenuBar.add(lblFacturar);

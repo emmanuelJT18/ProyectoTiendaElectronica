@@ -18,8 +18,8 @@ public class LblMenuTab extends JLabel {
 	private static LblMenuTab currentSelectedTab = null;//This will help me to identify which object of the class was clicked 
 	//to un-clicked the previous one if other tab was clicked before
 	
-	private final Color lineColor = new Color(6, 57, 112); //Azul marino
-	private final Border normalBorder = BorderFactory.createBevelBorder(1);//creaProfundidad
+	private final Color lineColor = new Color(6, 57, 112); //navy blue
+	private final Border normalBorder = BorderFactory.createBevelBorder(1);//deep border
 	private final Border hoverBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, lineColor);
 	private final Border clickedBorder = BorderFactory.createMatteBorder(0, 0, 4, 0, lineColor);
 
@@ -34,6 +34,11 @@ public class LblMenuTab extends JLabel {
 		setBorder(normalBorder);
 
 		eventos();
+	}
+	
+	public void presentedAsPressed() {
+		
+		setBorder(clickedBorder);
 	}
 
 	private void eventos() {

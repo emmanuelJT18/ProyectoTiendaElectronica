@@ -117,7 +117,7 @@ public class Inicio extends JFrame {
 		btnGoToComponente = new BtnForSideMenu("Componentes");
 		btnGoToComponente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PComponenteView componenteView = new PComponenteView(); 
+				PComponenteView componenteView = new PComponenteView();
 				Utilidad.showMyPanel(pParentContainer, componenteView);
 			}
 		});
