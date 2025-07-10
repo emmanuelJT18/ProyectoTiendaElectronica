@@ -135,26 +135,7 @@ public class DGCrearCompMicroProcesador extends JDialog {
 				JButton btnCreate = new JButton("Crear Componente");
 				btnCreate.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						try {
-							
-							String id = txtId.getText();                      
-							String numeroSerie = txtNumeroSerie.getText();                 
-							String marca = txtMarca.getText();                       
-							String modelo = txtModelo.getText();                      
-							Double precio = Double.parseDouble(txtPrecio.getText());                      
-							int cantDisponible = Integer.parseInt(txtCantidadDisponible.getText());          
-							String tipoConexion = txtTipoConexion.getText();                
-							String velocidadProcesamiento = txtVelocidadProcesamiento.getText();      
-							
-							MicroProcesador nuevoComponente = new MicroProcesador(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, velocidadProcesamiento);
-							controlador.addComponente(nuevoComponente);
-							
-							String test = controlador.getComponentes().get(0).getId();
-							JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
-							componenteView.updateTable();//Refreshes the table
-						}catch(Exception ex) {
-							JOptionPane.showConfirmDialog(null, "Description: " + ex);
-						}
+						newMicroProcesador();
 					}
 				});
 				btnCreate.setActionCommand("OK");
@@ -166,6 +147,29 @@ public class DGCrearCompMicroProcesador extends JDialog {
 				btnCancelar.setActionCommand("Cancel");
 				buttonPane.add(btnCancelar);
 			}
+		}
+	}
+	
+	private void newMicroProcesador() {
+		try {
+			
+			String id = txtId.getText();                      
+			String numeroSerie = txtNumeroSerie.getText();                 
+			String marca = txtMarca.getText();                       
+			String modelo = txtModelo.getText();                      
+			Double precio = Double.parseDouble(txtPrecio.getText());                      
+			int cantDisponible = Integer.parseInt(txtCantidadDisponible.getText());          
+			String tipoConexion = txtTipoConexion.getText();                
+			String velocidadProcesamiento = txtVelocidadProcesamiento.getText();      
+			
+			MicroProcesador nuevoComponente = new MicroProcesador(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, velocidadProcesamiento);
+			controlador.addComponente(nuevoComponente);
+			
+			String test = controlador.getComponentes().get(0).getId();
+			JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
+			componenteView.updateTable();//Refreshes the table
+		}catch(Exception ex) {
+			JOptionPane.showConfirmDialog(null, "Description: " + ex);
 		}
 	}
 }
