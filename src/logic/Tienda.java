@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Tienda {
 	private ArrayList<Componente> componentes;
-	private static Tienda instanciaUnica;
+	private static Tienda uniqueInstance;
 	
 	public static Tienda getInstance() {
-		if(instanciaUnica == null) {
-			instanciaUnica = new Tienda();
+		if(uniqueInstance == null) {
+			uniqueInstance = new Tienda();
 
 		}
-		return instanciaUnica;
+		return uniqueInstance;
 	}
 
 	private Tienda() {

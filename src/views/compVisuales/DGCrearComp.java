@@ -7,20 +7,23 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Utilidad;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class DGCrearComp extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtId;
+	private JTextField txtNumeroSerie;
+	private JTextField txtMarca;
+	private JTextField txtModelo;
+	private JTextField txtPrecio;
+	private JTextField txtCantidadDisponible;
+	private JLabel lblCompPicture;
 
 	/**
 	 * Launch the application.
@@ -39,128 +42,110 @@ public class DGCrearComp extends JDialog {
 	 * Create the dialog.
 	 */
 	public DGCrearComp() {
-		setBounds(100, 100, 655, 441);
+		setBounds(100, 100, 686, 441);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			JPanel panel = new JPanel();
-			panel.setLayout(null);
-			contentPanel.add(panel);
+			JPanel pCenterPanel = new JPanel();
+			pCenterPanel.setLayout(null);
+			contentPanel.add(pCenterPanel);
 			{
 				JLabel label = new JLabel("ID del Componente");
-				label.setBounds(31, 27, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 16, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
-				textField = new JTextField();
-				textField.setColumns(10);
-				textField.setBounds(152, 24, 116, 22);
-				panel.add(textField);
+				txtId = new JTextField();
+				txtId.setColumns(10);
+				txtId.setBounds(130, 13, 138, 22);
+				pCenterPanel.add(txtId);
 			}
 			{
-				textField_1 = new JTextField();
-				textField_1.setColumns(10);
-				textField_1.setBounds(152, 64, 116, 22);
-				panel.add(textField_1);
+				txtNumeroSerie = new JTextField();
+				txtNumeroSerie.setColumns(10);
+				txtNumeroSerie.setBounds(121, 53, 147, 22);
+				pCenterPanel.add(txtNumeroSerie);
 			}
 			{
 				JLabel label = new JLabel("Numero de Serie");
-				label.setBounds(31, 67, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 56, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
-				textField_2 = new JTextField();
-				textField_2.setColumns(10);
-				textField_2.setBounds(411, 64, 116, 22);
-				panel.add(textField_2);
+				txtMarca = new JTextField();
+				txtMarca.setColumns(10);
+				txtMarca.setBounds(68, 160, 200, 22);
+				pCenterPanel.add(txtMarca);
 			}
 			{
 				JLabel label = new JLabel("Marca");
-				label.setBounds(352, 67, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 163, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Modelo");
-				label.setBounds(352, 24, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 123, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
-				textField_3 = new JTextField();
-				textField_3.setColumns(10);
-				textField_3.setBounds(401, 24, 116, 22);
-				panel.add(textField_3);
+				txtModelo = new JTextField();
+				txtModelo.setColumns(10);
+				txtModelo.setBounds(68, 120, 200, 22);
+				pCenterPanel.add(txtModelo);
 			}
 			{
 				JLabel label = new JLabel("Precio");
-				label.setBounds(31, 102, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 91, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
-				textField_4 = new JTextField();
-				textField_4.setColumns(10);
-				textField_4.setBounds(152, 99, 116, 22);
-				panel.add(textField_4);
+				txtPrecio = new JTextField();
+				txtPrecio.setColumns(10);
+				txtPrecio.setBounds(83, 88, 185, 22);
+				pCenterPanel.add(txtPrecio);
 			}
 			{
 				JLabel label = new JLabel("Cant. Disponible");
-				label.setBounds(31, 137, 109, 16);
-				panel.add(label);
+				label.setBounds(12, 198, 109, 16);
+				pCenterPanel.add(label);
 			}
 			{
-				textField_5 = new JTextField();
-				textField_5.setColumns(10);
-				textField_5.setBounds(152, 134, 116, 22);
-				panel.add(textField_5);
+				txtCantidadDisponible = new JTextField();
+				txtCantidadDisponible.setColumns(10);
+				txtCantidadDisponible.setBounds(127, 195, 141, 22);
+				pCenterPanel.add(txtCantidadDisponible);
 			}
 			{
-				JLabel label = new JLabel("Tipo Conexion");
-				label.setBounds(352, 99, 89, 16);
-				panel.add(label);
-			}
-			{
-				textField_6 = new JTextField();
-				textField_6.setColumns(10);
-				textField_6.setBounds(446, 99, 116, 22);
-				panel.add(textField_6);
-			}
-			{
-				JLabel label = new JLabel("Velocidad de Procesamiento");
-				label.setBounds(280, 137, 181, 16);
-				panel.add(label);
-			}
-			{
-				textField_7 = new JTextField();
-				textField_7.setColumns(10);
-				textField_7.setBounds(456, 134, 116, 22);
-				panel.add(textField_7);
+				lblCompPicture = new JLabel("");
+				lblCompPicture.setBounds(312, 13, 334, 299);
+				Utilidad.fitImageInsideLabel("img/compImage.jpg", lblCompPicture);
+				pCenterPanel.add(lblCompPicture);
 			}
 		}
-		{
-			JPanel panel = new JPanel();
-			contentPanel.add(panel);
-			{
-				JLabel lblCrearComponente = new JLabel("Crear Componente");
-				panel.add(lblCrearComponente);
-			}
-		}
+		
+		JPanel pNorthPanel = new JPanel();
+		contentPanel.add(pNorthPanel, BorderLayout.NORTH);
+		
+		JLabel label = new JLabel("Crear Componente");
+		label.setFont(new Font("Malgun Gothic", Font.BOLD, 20));
+		pNorthPanel.add(label);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnSave = new JButton("Guardar Componente");
+				btnSave.setActionCommand("OK");
+				buttonPane.add(btnSave);
+				getRootPane().setDefaultButton(btnSave);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton btnCancel = new JButton("Cancelar");
+				btnCancel.setActionCommand("Cancel");
+				buttonPane.add(btnCancel);
 			}
 		}
 	}
-
 }
