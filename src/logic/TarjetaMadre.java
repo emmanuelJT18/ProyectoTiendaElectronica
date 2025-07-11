@@ -36,6 +36,5 @@ public class TarjetaMadre extends Componente {
 	public void setConxionesDiscosDuros(String conxionesDiscosDuros) {
 		this.conxionesDiscosDuros = conxionesDiscosDuros;
 	}
-	
-	
+
 }

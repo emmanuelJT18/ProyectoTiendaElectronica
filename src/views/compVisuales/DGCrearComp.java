@@ -42,7 +42,7 @@ public class DGCrearComp extends JDialog {
 	 * Create the dialog.
 	 */
 	public DGCrearComp() {
-		setBounds(100, 100, 686, 441);
+		setBounds(100, 100, 758, 441);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -119,7 +119,7 @@ public class DGCrearComp extends JDialog {
 			}
 			{
 				lblCompPicture = new JLabel("");
-				lblCompPicture.setBounds(312, 13, 334, 299);
+				lblCompPicture.setBounds(362, 16, 356, 299);
 				Utilidad.fitImageInsideLabel("img/compImage.jpg", lblCompPicture);
 				pCenterPanel.add(lblCompPicture);
 			}
