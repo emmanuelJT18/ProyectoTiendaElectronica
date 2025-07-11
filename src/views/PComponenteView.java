@@ -39,7 +39,7 @@ public class PComponenteView extends JPanel {
 		JButton btnNuevoComponente = new JButton("Nuevo Componente");
 		btnNuevoComponente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DGCrearCompMicroProcesador crearMicroProcesadorView = new DGCrearCompMicroProcesador(PComponenteView.this);
+				DGCrearMicroProcesador crearMicroProcesadorView = new DGCrearMicroProcesador(PComponenteView.this);
 				crearMicroProcesadorView.setVisible(true);
 			}
 		});

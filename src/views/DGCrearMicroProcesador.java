@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class DGCrearCompMicroProcesador extends JDialog {
+public class DGCrearMicroProcesador extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtId;
@@ -35,7 +35,7 @@ public class DGCrearCompMicroProcesador extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public DGCrearCompMicroProcesador(PComponenteView componenteView) {
+	public DGCrearMicroProcesador(PComponenteView componenteView) {
 		this.componenteView = componenteView;
 		setBounds(100, 100, 655, 441);
 		getContentPane().setLayout(new BorderLayout());
