@@ -16,10 +16,15 @@ import logic.Componente;
 import logic.Tienda;
 
 import java.awt.BorderLayout;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 
 public class PComponenteView extends JPanel {
 	private Tienda controller = Tienda.getInstance();
 	private JTable table;
+	private JComboBox cbxTiposComponentes;
 	/**
 	 * Create the panel.
 	 */
@@ -37,13 +42,26 @@ public class PComponenteView extends JPanel {
 		add(pActions, BorderLayout.NORTH);
 		
 		JButton btnNuevoComponente = new JButton("Nuevo Componente");
+		btnNuevoComponente.setBounds(392, 82, 143, 25);
 		btnNuevoComponente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DGCrearMicroProcesador crearMicroProcesadorView = new DGCrearMicroProcesador(PComponenteView.this);
-				crearMicroProcesadorView.setVisible(true);
+				//DGCrearMicroProcesador crearMicroProcesadorView = new DGCrearMicroProcesador(PComponenteView.this);
+				//crearMicroProcesadorView.setVisible(true);
+				
+				openViewForNewComponent();
 			}
 		});
+		pActions.setLayout(null);
 		pActions.add(btnNuevoComponente);
+		
+		cbxTiposComponentes = new JComboBox();
+		cbxTiposComponentes.setModel(new DefaultComboBoxModel(new String[] {"seleccione", "Microprocesador", "Tarjeta Madre", "Memoria RAM"}));
+		cbxTiposComponentes.setBounds(231, 83, 119, 22);
+		pActions.add(cbxTiposComponentes);
+		
+		JLabel lblNewLabel = new JLabel("Tipo de Componente");
+		lblNewLabel.setBounds(100, 86, 119, 16);
+		pActions.add(lblNewLabel);
 		 
 		JPanel pShowData = new JPanel();
 		add(pShowData, BorderLayout.CENTER);
@@ -53,6 +71,21 @@ public class PComponenteView extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(table);
 		pShowData.add(scrollPane, BorderLayout.CENTER);
 		
+	}
+	
+	private void openViewForNewComponent() {
+		JDialog createComponentView;
+		
+		JDialog[] views = {
+				new DGCrearMicroProcesador(PComponenteView.this), 
+				new DGCrearTarjetaMadre(PComponenteView.this), 
+				new DGCrearMemoriaRAM(PComponenteView.this),
+		};
+		
+		if(cbxTiposComponentes.getSelectedIndex() != 0) {
+			createComponentView = views[cbxTiposComponentes.getSelectedIndex()-1];
+			createComponentView.setVisible(true);
+		}
 	}
 	
 	private DefaultTableModel getTableModel() {

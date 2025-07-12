@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DGCrearTarjetaMadre extends JDialog {
 
@@ -29,7 +31,7 @@ public class DGCrearTarjetaMadre extends JDialog {
 	private JTextField txtPrecio;
 	private JTextField txtCantidadDisponible;
 	private JLabel lblCompPicture;
-	private Tienda controller;
+	private Tienda controller = Tienda.getInstance();
 	private PComponenteView componenteView;
 	private JTextField txtTipoConexion;
 	private JTextField txtTipoMemoriaRAM;
@@ -196,6 +198,11 @@ public class DGCrearTarjetaMadre extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnSave = new JButton("Guardar Componente");
+				btnSave.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						newTarjetaMadre();
+					}
+				});
 				btnSave.setActionCommand("OK");
 				buttonPane.add(btnSave);
 				getRootPane().setDefaultButton(btnSave);
@@ -208,7 +215,7 @@ public class DGCrearTarjetaMadre extends JDialog {
 		}
 	}
 	
-	private void newMicroProcesador() {
+	private void newTarjetaMadre() {
 		try {
 			
 			String id = txtId.getText();                      
@@ -220,6 +227,15 @@ public class DGCrearTarjetaMadre extends JDialog {
 			String tipoConexion = txtTipoConexion.getText();        
 			String tipoMemoriaRAM = txtTipoMemoriaRAM.getText();    
 			String conxionesDiscosDuros = txtAconxionesDiscosDuros.getText();
+			System.out.println(id);
+			System.out.println(numeroSerie);
+			System.out.println(marca);
+			System.out.println(modelo);
+			System.out.println(precio);
+			System.out.println(cantDisponible);
+			System.out.println(tipoConexion);
+			System.out.println(tipoMemoriaRAM);
+			System.out.println(conxionesDiscosDuros);
 			
 			TarjetaMadre nuevoComponente = new TarjetaMadre(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, tipoMemoriaRAM, conxionesDiscosDuros);
 			controller.addComponente(nuevoComponente);
@@ -228,7 +244,7 @@ public class DGCrearTarjetaMadre extends JDialog {
 			JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
 			componenteView.updateTable();//Refreshes the table
 		}catch(Exception ex) {
-			JOptionPane.showConfirmDialog(null, "Description: " + ex);
+			JOptionPane.showConfirmDialog(null, "Description: " + ex.getStackTrace());
 		}
 	}
 }
