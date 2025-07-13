@@ -65,11 +65,12 @@ public class PComponenteView extends JPanel {
 		 
 		JPanel pShowData = new JPanel();
 		add(pShowData, BorderLayout.CENTER);
-		pShowData.setLayout(new BorderLayout(0, 0));
+		pShowData.setLayout(null);
 		
 		table = new JTable(getTableModel());
 		JScrollPane scrollPane = new JScrollPane(table);
-		pShowData.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setBounds(100, 0, 900, 400);
+		pShowData.add(scrollPane/*, BorderLayout.CENTER*/);
 		
 	}
 	
