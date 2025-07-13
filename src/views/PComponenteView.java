@@ -76,13 +76,16 @@ public class PComponenteView extends JPanel {
 	
 	private void openViewForNewComponent() {
 		JDialog createComponentView;
+		DGCrearMicroProcesador microProcesadorView = new DGCrearMicroProcesador(PComponenteView.this);
+		DGCrearTarjetaMadre tarjetaMadreView = new DGCrearTarjetaMadre(PComponenteView.this);
+		DGCrearMemoriaRAM memoriaRAM = new DGCrearMemoriaRAM(PComponenteView.this);
+		DGCrearDiscoDuro discoDuro = new DGCrearDiscoDuro(PComponenteView.this);
 		
-		JDialog[] views = {
-				new DGCrearMicroProcesador(PComponenteView.this), 
-				new DGCrearTarjetaMadre(PComponenteView.this), 
-				new DGCrearMemoriaRAM(PComponenteView.this),
-				new DGCrearDiscoDuro(PComponenteView.this),
-		};
+		JDialog[] views = { microProcesadorView, tarjetaMadreView, memoriaRAM, discoDuro};
+		
+		for(JDialog view : views) {
+			view.setModal(true);
+		}
 		
 		if(cbxTiposComponentes.getSelectedIndex() != 0) {
 			createComponentView = views[cbxTiposComponentes.getSelectedIndex()-1];
@@ -91,15 +94,7 @@ public class PComponenteView extends JPanel {
 	}
 	
 	private DefaultTableModel getTableModel() {
-		/*
-		 *  String id = txtId.getText();                      
-			String numeroSerie = txtNumeroSerie.getText();                 
-			String marca = txtMarca.getText();                       
-			String modelo = txtModelo.getText();                      
-			Double precio = Double.parseDouble(txtPrecio.getText());                      
-			int cantDisponible = Integer.parseInt(txtCantidadDisponible.getText());          
-			String tipoConexion = txtTipoConexion.getText();                
-			String velocidadProcesamiento = txtVelocidadProcesamiento.getText();*/
+
 		String[] columns = {"ID", "Num. Serie", "Marca", "Modelo", "Precio", "Stock"};
 		DefaultTableModel model = new DefaultTableModel(columns, 0);
 		
