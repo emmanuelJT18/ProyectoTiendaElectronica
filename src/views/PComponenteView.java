@@ -81,7 +81,7 @@ public class PComponenteView extends JPanel {
 		DGCrearMemoriaRAM memoriaRAM = new DGCrearMemoriaRAM(PComponenteView.this);
 		DGCrearDiscoDuro discoDuro = new DGCrearDiscoDuro(PComponenteView.this);
 		
-		JDialog[] views = { microProcesadorView, tarjetaMadreView, memoriaRAM, discoDuro};
+		JDialog[] views = { microProcesadorView, tarjetaMadreView, memoriaRAM, discoDuro };
 		
 		for(JDialog view : views) {
 			view.setModal(true);
