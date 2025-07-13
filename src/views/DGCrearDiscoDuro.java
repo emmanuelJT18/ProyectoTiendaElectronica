@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logic.Componente;
+import logic.DiscoDuro;
 import logic.MicroProcesador;
 import logic.Tienda;
 
@@ -20,7 +21,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class DGCrearMicroProcesador extends JDialog {
+public class DGCrearDiscoDuro extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtId;
@@ -30,14 +31,14 @@ public class DGCrearMicroProcesador extends JDialog {
 	private JTextField txtPrecio;
 	private JTextField txtCantidadDisponible;
 	private JTextField txtTipoConexion;
-	private JTextField txtVelocidadProcesamiento;
+	private JTextField txtCantidadMemoria;
 	private Tienda controller = Tienda.getInstance();
 	private PComponenteView componenteView;
 	private int fontSize = 15;
 	
 	public static void main(String[] args) {
 		try {
-			DGCrearMicroProcesador dialog = new DGCrearMicroProcesador(null);
+			DGCrearDiscoDuro dialog = new DGCrearDiscoDuro(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -47,7 +48,7 @@ public class DGCrearMicroProcesador extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public DGCrearMicroProcesador(PComponenteView componenteView) {
+	public DGCrearDiscoDuro(PComponenteView componenteView) {
 		this.componenteView = componenteView;
 		setBounds(100, 100, 655, 441);
 		getContentPane().setLayout(new BorderLayout());
@@ -138,15 +139,15 @@ public class DGCrearMicroProcesador extends JDialog {
 			txtTipoConexion.setBounds(252, 242, 77, 22);
 			pParentContainer.add(txtTipoConexion);
 			
-			JLabel lblVelocidadProcesamiento = new JLabel("Velocidad de Procesamiento");
-			lblVelocidadProcesamiento.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-			lblVelocidadProcesamiento.setBounds(31, 279, 221, 16);
-			pParentContainer.add(lblVelocidadProcesamiento);
+			JLabel lblCantidadMemoria = new JLabel("Cant. Memoria");
+			lblCantidadMemoria.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+			lblCantidadMemoria.setBounds(31, 279, 221, 16);
+			pParentContainer.add(lblCantidadMemoria);
 			
-			txtVelocidadProcesamiento = new JTextField();
-			txtVelocidadProcesamiento.setColumns(10);
-			txtVelocidadProcesamiento.setBounds(252, 277, 77, 22);
-			pParentContainer.add(txtVelocidadProcesamiento);
+			txtCantidadMemoria = new JTextField();
+			txtCantidadMemoria.setColumns(10);
+			txtCantidadMemoria.setBounds(252, 277, 77, 22);
+			pParentContainer.add(txtCantidadMemoria);
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -181,9 +182,9 @@ public class DGCrearMicroProcesador extends JDialog {
 			Double precio = Double.parseDouble(txtPrecio.getText());                      
 			int cantDisponible = Integer.parseInt(txtCantidadDisponible.getText());          
 			String tipoConexion = txtTipoConexion.getText();                
-			String velocidadProcesamiento = txtVelocidadProcesamiento.getText();      
+			String cantMemoria = txtCantidadMemoria.getText();      
 			
-			MicroProcesador newComponente = new MicroProcesador(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, velocidadProcesamiento);
+			DiscoDuro newComponente = new DiscoDuro(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, cantMemoria);
 			controller.addComponente(newComponente);
 			
 			String test = controller.getComponentes().get(controller.getComponentes().size()-1).getId();

@@ -240,7 +240,7 @@ public class DGCrearTarjetaMadre extends JDialog {
 			TarjetaMadre nuevoComponente = new TarjetaMadre(id, numeroSerie, marca, modelo, precio, cantDisponible, tipoConexion, tipoMemoriaRAM, conxionesDiscosDuros);
 			controller.addComponente(nuevoComponente);
 			
-			String test = controller.getComponentes().get(0).getId();
+			String test = controller.getComponentes().get(controller.getComponentes().size()-1).getId();
 			JOptionPane.showConfirmDialog(null, "Se guardo bien: " + test);
 			componenteView.updateTable();//Refreshes the table
 		}catch(Exception ex) {
