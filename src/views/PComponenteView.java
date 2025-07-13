@@ -55,7 +55,7 @@ public class PComponenteView extends JPanel {
 		pActions.add(btnNuevoComponente);
 		
 		cbxTiposComponentes = new JComboBox();
-		cbxTiposComponentes.setModel(new DefaultComboBoxModel(new String[] {"seleccione", "Microprocesador", "Tarjeta Madre", "Memoria RAM"}));
+		cbxTiposComponentes.setModel(new DefaultComboBoxModel(new String[] {"seleccione", "Microprocesador", "Tarjeta Madre", "Memoria RAM", "Disco Duro"}));
 		cbxTiposComponentes.setBounds(231, 83, 119, 22);
 		pActions.add(cbxTiposComponentes);
 		
@@ -80,6 +80,7 @@ public class PComponenteView extends JPanel {
 				new DGCrearMicroProcesador(PComponenteView.this), 
 				new DGCrearTarjetaMadre(PComponenteView.this), 
 				new DGCrearMemoriaRAM(PComponenteView.this),
+				new DGCrearDiscoDuro(PComponenteView.this),
 		};
 		
 		if(cbxTiposComponentes.getSelectedIndex() != 0) {

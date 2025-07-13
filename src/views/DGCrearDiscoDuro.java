@@ -59,7 +59,7 @@ public class DGCrearDiscoDuro extends JDialog {
 		JPanel pTitlePanel = new JPanel();
 		contentPanel.add(pTitlePanel, BorderLayout.NORTH);
 		{
-			JLabel lblTitle = new JLabel("Micro Procesador");
+			JLabel lblTitle = new JLabel("Disco Duro");
 			lblTitle.setFont(new Font("Tahoma", Font.BOLD, 16));
 			pTitlePanel.add(lblTitle);
 		}
