@@ -18,6 +18,7 @@ public class PClienteView extends JPanel {
 						Utilidad.heightForParentPanelView
 				)
 		);
+		setLayout(null);
 	}
 
 }
