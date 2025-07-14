@@ -75,21 +75,22 @@ public class PComponenteView extends JPanel {
 	}
 	
 	private void openViewForNewComponent() {
-		JDialog createComponentView;
-		DGCrearMicroProcesador microProcesadorView = new DGCrearMicroProcesador(PComponenteView.this);
-		DGCrearTarjetaMadre tarjetaMadreView = new DGCrearTarjetaMadre(PComponenteView.this);
-		DGCrearMemoriaRAM memoriaRAM = new DGCrearMemoriaRAM(PComponenteView.this);
-		DGCrearDiscoDuro discoDuro = new DGCrearDiscoDuro(PComponenteView.this);
+		JDialog createComponentForm;
+		DGCrearMicroProcesador microProcesadorForm = new DGCrearMicroProcesador(PComponenteView.this);
+		DGCrearTarjetaMadre tarjetaMadreForm = new DGCrearTarjetaMadre(PComponenteView.this);
+		DGCrearMemoriaRAM memoriaRAMForm = new DGCrearMemoriaRAM(PComponenteView.this);
+		DGCrearDiscoDuro discoDuroForm = new DGCrearDiscoDuro(PComponenteView.this);
 		
-		JDialog[] views = { microProcesadorView, tarjetaMadreView, memoriaRAM, discoDuro };
+		JDialog[] forms = { microProcesadorForm, tarjetaMadreForm, memoriaRAMForm, discoDuroForm };
 		
-		for(JDialog view : views) {
-			view.setModal(true);
+		for(JDialog form : forms) {
+			form.setModal(true);
 		}
 		
 		if(cbxTiposComponentes.getSelectedIndex() != 0) {
-			createComponentView = views[cbxTiposComponentes.getSelectedIndex()-1];
-			createComponentView.setVisible(true);
+			createComponentForm = forms[cbxTiposComponentes.getSelectedIndex()-1];
+			createComponentForm.setLocationRelativeTo(null);
+			createComponentForm.setVisible(true);
 		}
 	}
 	
