@@ -83,12 +83,9 @@ public class PComponenteView extends JPanel {
 		
 		JDialog[] forms = { microProcesadorForm, tarjetaMadreForm, memoriaRAMForm, discoDuroForm };
 		
-		for(JDialog form : forms) {
-			form.setModal(true);
-		}
-		
 		if(cbxTiposComponentes.getSelectedIndex() != 0) {
 			createComponentForm = forms[cbxTiposComponentes.getSelectedIndex()-1];
+			createComponentForm.setLocationRelativeTo(null);
 			createComponentForm.setLocationRelativeTo(null);
 			createComponentForm.setVisible(true);
 		}
