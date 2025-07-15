@@ -86,7 +86,6 @@ public class PComponenteView extends JPanel {
 		if(cbxTiposComponentes.getSelectedIndex() != 0) {
 			createComponentForm = forms[cbxTiposComponentes.getSelectedIndex()-1];
 			createComponentForm.setLocationRelativeTo(null);
-			createComponentForm.setLocationRelativeTo(null);
 			createComponentForm.setVisible(true);
 		}
 	}
