@@ -74,22 +74,6 @@ public class PComponenteView extends JPanel {
 		
 	}
 	
-	private void openViewForNewComponent() {
-		JDialog createComponentForm;
-		DGCrearMicroProcesador microProcesadorForm = new DGCrearMicroProcesador(PComponenteView.this);
-		DGCrearTarjetaMadre tarjetaMadreForm = new DGCrearTarjetaMadre(PComponenteView.this);
-		DGCrearMemoriaRAM memoriaRAMForm = new DGCrearMemoriaRAM(PComponenteView.this);
-		DGCrearDiscoDuro discoDuroForm = new DGCrearDiscoDuro(PComponenteView.this);
-		
-		JDialog[] forms = { microProcesadorForm, tarjetaMadreForm, memoriaRAMForm, discoDuroForm };
-		
-		if(cbxTiposComponentes.getSelectedIndex() != 0) {
-			createComponentForm = forms[cbxTiposComponentes.getSelectedIndex()-1];
-			createComponentForm.setLocationRelativeTo(null);
-			createComponentForm.setVisible(true);
-		}
-	}
-	
 	private DefaultTableModel getTableModel() {
 
 		String[] columns = {"ID", "Num. Serie", "Marca", "Modelo", "Precio", "Stock"};
@@ -112,5 +96,22 @@ public class PComponenteView extends JPanel {
 	public void updateTable() {
 		DefaultTableModel updatedModel = getTableModel();
 		table.setModel(updatedModel);
+	}
+	
+	private void openViewForNewComponent() {
+		JDialog createComponentForm;
+		DGCrearMicroProcesador microProcesadorForm = new DGCrearMicroProcesador(PComponenteView.this);
+		DGCrearTarjetaMadre tarjetaMadreForm = new DGCrearTarjetaMadre(PComponenteView.this);
+		DGCrearMemoriaRAM memoriaRAMForm = new DGCrearMemoriaRAM(PComponenteView.this);
+		DGCrearDiscoDuro discoDuroForm = new DGCrearDiscoDuro(PComponenteView.this);
+		
+		JDialog[] forms = { microProcesadorForm, tarjetaMadreForm, memoriaRAMForm, discoDuroForm };
+		
+		if(cbxTiposComponentes.getSelectedIndex() != 0) {
+			createComponentForm = forms[cbxTiposComponentes.getSelectedIndex()-1];
+			createComponentForm.setLocationRelativeTo(null);
+			createComponentForm.setModal(true);
+			createComponentForm.setVisible(true);
+		}
 	}
 }

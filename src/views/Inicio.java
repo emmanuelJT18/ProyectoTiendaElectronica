@@ -113,6 +113,8 @@ public class Inicio extends JFrame {
 
 			}
 		});
+		btnGoToFactura.setBounds(0, 253, 300, 49);
+
 		
 		btnGoToComponente = new BtnForSideMenu("Componentes");
 		btnGoToComponente.addActionListener(new ActionListener() {
@@ -123,12 +125,22 @@ public class Inicio extends JFrame {
 		});
 		btnGoToComponente.setBounds(0, 315, 300, 49);
 		
-		btnGoToFactura.setBounds(0, 253, 300, 49);
+		
+		BtnForSideMenu btnGoToCliente = new BtnForSideMenu("Clientes");
+		btnGoToCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PClienteView clienteView = new PClienteView();
+				Utilidad.showMyPanel(pParentContainer, clienteView);
+			}
+		});
+		btnGoToCliente.setBounds(0, 377, 300, 49);
 
 		pWestContainer.setLayout(null);
 		pWestContainer.add(btnGoToInicio);
 		pWestContainer.add(btnGoToFactura);
 		pWestContainer.add(btnGoToComponente);
+		pWestContainer.add(btnGoToCliente);
+		
 		lblLogo.setBounds(0, 0, 300, 178);
 		Utilidad.fitImageInsideLabel(
 				"D:\\PUCMM7\\Cam Clim\\Practicas\\Practica 5\\WhatsApp Image 2025-07-06 at 14.44.25_2f7d1c76.jpg", 

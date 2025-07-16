@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 
 public class DGCrearCliente extends JDialog {
 	private int fontSize = 15;
-
+	private PClienteView clienteView; 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtId;
 	private JTextField txtNombre;
@@ -33,6 +33,7 @@ public class DGCrearCliente extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			DGCrearCliente dialog = new DGCrearCliente();
@@ -41,12 +42,13 @@ public class DGCrearCliente extends JDialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	/**
 	 * Create the dialog.
 	 */
-	public DGCrearCliente() {
+	public DGCrearCliente(PClienteView clienteView) {
+		this.clienteView = clienteView;
 		controller = Tienda.getInstance();
 		setBounds(100, 100, 718, 417);
 		getContentPane().setLayout(new BorderLayout());
@@ -146,6 +148,7 @@ public class DGCrearCliente extends JDialog {
 			Cliente newCliente = new Cliente(id, nombre, telefono, direccion);
 			controller.addCliente(newCliente);
 			//String test = controller.getClientes().get(controller.getClientes().size()-1).getId();
+			clienteView.updateTable();
 			JOptionPane.showConfirmDialog(null, "El cliente se ha creado correctamente.");
 		}catch(Exception ex) {
 			JOptionPane.showConfirmDialog(null, ex.getStackTrace());

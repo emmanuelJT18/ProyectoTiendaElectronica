@@ -3,6 +3,7 @@ package views;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import logic.Cliente;
 import logic.Componente;
@@ -14,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PClienteView extends JPanel {
 	private Tienda controller;
@@ -49,6 +52,14 @@ public class PClienteView extends JPanel {
 		txtQuery.setColumns(10);
 		
 		JButton btnNewCliente = new JButton("Crear Cliente");
+		btnNewCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DGCrearCliente newClienteForm = new DGCrearCliente(PClienteView.this);
+				newClienteForm.setLocationRelativeTo(null);
+				newClienteForm.setModal(true);
+				newClienteForm.setVisible(true);
+			}
+		});
 		btnNewCliente.setBounds(545, 80, 129, 25);
 		pActions.add(btnNewCliente);
 		
@@ -58,8 +69,10 @@ public class PClienteView extends JPanel {
 		pParentContainer.setLayout(null);
 		
 		tblClientes = new JTable(getTableModel());
-		tblClientes.setBounds(1015, 501, -927, -419);
-		pParentContainer.add(tblClientes);
+		JScrollPane scrollPane = new JScrollPane(tblClientes);
+		scrollPane.setBounds(25, 50, 927, 419);
+		pParentContainer.add(scrollPane);
+		
 	}
 	
 	private DefaultTableModel getTableModel() {
@@ -76,5 +89,10 @@ public class PClienteView extends JPanel {
 			model.addRow(row);
 		}
 		return model;
+	}
+	
+	public void updateTable() {
+		DefaultTableModel updatedModel = getTableModel();
+		tblClientes.setModel(updatedModel);
 	}
 }
