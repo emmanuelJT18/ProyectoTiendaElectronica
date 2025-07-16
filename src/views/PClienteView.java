@@ -12,15 +12,19 @@ import logic.Utilidad;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class PClienteView extends JPanel {
 	private Tienda controller;
-	private JTextField txtQuery;
+	private JTextField txtParameter;
 	private JTable tblClientes;
 
 	/**
@@ -41,15 +45,19 @@ public class PClienteView extends JPanel {
 		add(pActions);
 		pActions.setLayout(null);
 		
-		JButton btnSearch = new JButton("buscar");
-		btnSearch.setIcon(null);
-		btnSearch.setBounds(335, 80, 97, 25);
-		pActions.add(btnSearch);
-		
-		txtQuery = new JTextField();
-		txtQuery.setBounds(189, 81, 116, 22);
-		pActions.add(txtQuery);
-		txtQuery.setColumns(10);
+		txtParameter = new JTextField();
+		txtParameter.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				DefaultTableModel tableModel = (DefaultTableModel) tblClientes.getModel();
+				TableRowSorter<DefaultTableModel> rowSorter = new TableRowSorter<>(tableModel);
+				tblClientes.setRowSorter(rowSorter);
+				rowSorter.setRowFilter(RowFilter.regexFilter(txtParameter.getText()));
+			}
+		});
+		txtParameter.setBounds(189, 81, 116, 22);
+		pActions.add(txtParameter);
+		txtParameter.setColumns(10);
 		
 		JButton btnNewCliente = new JButton("Crear Cliente");
 		btnNewCliente.addActionListener(new ActionListener() {
