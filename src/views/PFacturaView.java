@@ -47,7 +47,6 @@ public class PFacturaView extends JPanel {
 				Utilidad.heightForChildPanelView
 		);
 		add(pContainerForViews);
-		pContainerForViews.setLayout(null);
 		
 		JPanel crearFacturaView = new PCrearFactura();
 		LblMenuTab lblFacturar = new LblMenuTab("Facturar", pContainerForViews, crearFacturaView);
@@ -60,14 +59,13 @@ public class PFacturaView extends JPanel {
 		pMenuBar.setLayout(null);
 		pMenuBar.add(lblFacturar);
 		pMenuBar.add(lblReportes);
+		pContainerForViews.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(502, 12, 1, 1);
 		pContainerForViews.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblFacturasContianer = new JLabel("FacturasContainer");
-		lblFacturasContianer.setBounds(508, 5, 104, 16);
 		pContainerForViews.add(lblFacturasContianer);
 		
 	}
